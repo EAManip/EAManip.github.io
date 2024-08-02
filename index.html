@@ -226,8 +226,17 @@ Data</h1>
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Learning from Visual Demonstrations</h2>
-        <div class="content has-text-justified" style="display: flex; justify-content: center;">
-          
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Imitation Learning</h3>
+          <ul>
+            <li>Uses expert demonstrations to train robots to perform tasks under conditions of minor variations</li>
+          </ul>
+          <h3 class="title is-4">Challenges to LfD</h3>
+          <ul>
+            <li>Abundant teleoperation data requirement - <span style="color: red;">Tedious, Time-consuming</span></li>
+            <li><span style="color: red;">Poor generalization</span> to novel visual domains</li>
+            <li><span style="color: red;">Embodiment gap</span> with different manipulators</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -237,24 +246,41 @@ Data</h1>
 
 
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Our Approach</h2>
-      </div>
-    </div>
-  </div>
-</section>
+        <h2 class="title is-3 has-text-centered">Our Approach</h2>
+        <figure class="image has-text-centered">
+          <img src="./static/images/approach.png" alt="Our Approach Image" style="height: 120%">
+        </figure>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Human Play Data</h2>
+        <br>
+        <h3 class="title is-4 has-text-centered">Bridging the embodiment gap</h3>
+        <p>We experiment with multiple techniques for bridging the human-robot embodiment gap as below:</p>
+        <ul style="list-style-type: disc; padding-left: 20px; text-align: left;">
+          <li>DINOV2 + LoRA (Rein)</li>
+          <li>KL Divergence</li>
+          <li>Masking Manipulator</li>
+          <li>Co-training with robot play data + Depth data</li> 
+          <li>Overlaying corresponding joints on hand and robot</li>
+        </ul>
+        <br>
+        <div style="display: flex; justify-content: space-around;">
+          <img src="./static/images/embodiment-1.png" alt="Embodiment 1" style="max-width: 45%; height: auto;">
+          <img src="./static/images/embodiment-2.png" alt="Embodiment 2" style="width: 55%; height: 35%; margin-top: 120px;">
+        </div>
+
+        <br><br>
+        <h3 class="title is-4 has-text-centered">Low-level Policy: Action Chunking with Transformers (ACT) </h3>
+        <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+          <img src="./static/images/act.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+          <figcaption>Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware, Zhao et al. 2023</figcaption>
+        </figure>
+        <p></p>
+        
+
       </div>
     </div>
   </div>
@@ -269,12 +295,157 @@ Data</h1>
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
 
+          <h3>Human Play Data</h3>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div class="publication-videos" style="display: flex; justify-content: space-between; gap: 10px;">
+                <video id="dollyzoom" autoplay controls muted loop playsinline style="flex: 1; height: 200px;">
+                  <source src="./static/videos/cotrained_hand.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop playsinline style="flex: 1; height: 200px;">
+                  <source src="./static/videos/gray_trained_checkerboard_eval.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop playsinline style="flex: 1; height: 200px;">
+                  <source src="./static/videos/gray_trained_gray_eval.mp4"
+                          type="video/mp4">
+                </video>
+                
+                <!-- <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="./static/videos/cotrained_hand.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 200px;"></iframe>
+                </div>
+                <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="./static/videos/gray_trained_checkerboard_eval.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 200px;"></iframe>
+                </div>
+                <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="./static/videos/gray_trained_gray_eval.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 200px;"></iframe>
+                </div> -->
+              </div>
+              High-level policy evaluation on human-play data. Ground truth (Green) and Prediction (Purple)
+            </div>
+          </div>
+
           <h3>Qualitative</h3>
-          <div class="image-container" style="display: flex; justify-content: center; align-items: flex-start;">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div class="publication-videos" style="display: flex; justify-content: space-between; gap: 10px;">
+                <iframe src="https://drive.google.com/file/d/1CW4R4301MbhF1f2GNg6Kg8pZHYCKXS3o/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="flex: 1; height: 300px;"></iframe>
+                <iframe src="https://drive.google.com/file/d/1Cd7ZKqY6Qbch-xLitkvMXM8xjo11coGd/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="flex: 1; height: 300px;"></iframe>
+                <iframe src="https://drive.google.com/file/d/1Cige_7WQQ5Snp8Yk4fGw751pvm5BgEol/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="flex: 1; height: 300px;"></iframe>
+
+                <!-- <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="https://drive.google.com/file/d/1CW4R4301MbhF1f2GNg6Kg8pZHYCKXS3o/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 150px;"></iframe>
+                </div>
+                <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="https://drive.google.com/file/d/1Cd7ZKqY6Qbch-xLitkvMXM8xjo11coGd/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 150px;"></iframe>
+                </div>
+                <div class="publication-video" style="flex: 1; margin: 0 10px;">
+                  <iframe src="https://drive.google.com/file/d/1Cige_7WQQ5Snp8Yk4fGw751pvm5BgEol/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 150px;"></iframe>
+                </div> -->
+              </div>
+              <p>Our high-level policy combined with ACT was able to demonstrate object and scene level generalization</p>
+
+              <br>
+              <h4> Robustness and real-time replanning</h4>
+              <div class="publication-videos" style="display: flex; justify-content: space-between; gap: 10px;">
+                <iframe src="https://drive.google.com/file/d/1Ib6LaCEhlnHlbalI0neOwLwYm2c5J9Hn/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="flex: 1; height: 300px;"></iframe>
+              </div>
+              <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+                <img src="./static/images/realtimereplanning.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+                <figcaption>Real-time replanning</figcaption>
+              </figure>
+              <br>
+            </div>
           </div>
 
           <h3>Quantitative</h3>
 
+          <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+            <img src="./static/images/highlevelablations.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <figcaption>DINOV2 with Low-rank Adaptation-based vision encoder achieves the best performance in terms of distance-metric</figcaption>
+          </figure>
+          <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+            <img src="./static/images/lowlevelablations.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <figcaption>Top-view along with wrist cameras achieve best success rates on unseen objects by leveraging style and latent information from ACT encoder</figcaption>
+          </figure>
+          <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+            <img src="./static/images/scenelevel.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <figcaption>High-level policy enables scene-level generalization</figcaption>
+          </figure>
+          <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+            <img src="./static/images/ablations.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <!-- <figcaption>EAM high-level with ACT low-level achieve best success rate by learning embodiment-agnostic representations using KL loss-based optimization. 
+              This also enables comparable success rates to other approaches by integrating high-level policy with Gradient-based IK solver for joint-space prediction
+            </figcaption> -->
+            <ul style="text-align: left;">
+              <li>EAM high-level with ACT low-level achieve best success rate by learning embodiment-agnostic representations using KL loss-based optimization.</li>
+              <li>This also enables comparable success rates to other approaches by integrating high-level policy with Gradient-based IK solver for joint-space prediction</li>
+            </ul>
+          </figure>
+          <figure style="max-width: 100%; height: auto; justify-content: space-around;">
+            <img src="./static/images/evaluations.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <figcaption>EAM+ACT using data from both human and robot embodiment achieve best success rate.</figcaption>
+          </figure>
+          <!-- Add content here -->
+          <!-- <table>
+            <tr>
+              <th>Model</th>
+              <th>Vision Encoder</th>
+              <th>Training</th>
+              <th>Final MSE (cm)</th>
+              <th>Paired MSE (cm)</th>
+            </tr>
+            <tr>
+              <td>EAM</td>
+              <td>ResNet</td>
+              <td>Robot</td>
+              <td>44.901</td>
+              <td>28.774</td>
+            </tr>
+            <tr>
+              <td>EAM</td>
+              <td>DinoV2</td>
+              <td>Robot</td>
+              <td>19.091</td>
+              <td>19.281</td>
+            </tr>
+            <tr>
+              <td>EAM</td>
+              <td>DinoV2+LoRA</td>
+              <td>Robot</td>
+              <td>8.459</td>
+              <td>6.169</td>
+            </tr>
+            <tr>
+              <td>EAM</td>
+              <td>DinoV2+LoRA</td>
+              <td>Robot+Human (Co-training)</td>
+              <td>30.418</td>
+              <td>20.981</td>
+            </tr>
+            <tr>
+              <td>EAM+KL</td>
+              <td>DinoV2+LoRA</td>
+              <td>Robot+Human (Co-training)</td>
+              <td>19.644</td>
+              <td>14.855</td>
+            </tr>
+            <tr>
+              <td>EAM+Segmentation</td>
+              <td>DinoV2+LoRA</td>
+              <td>Robot+Human (Co-training)</td>
+              <td>47.319</td>
+              <td>50.229</td>
+            </tr>
+            <tr>
+              <td>EAM+DomainDiscriminator</td>
+              <td>DinoV2+LoRA</td>
+              <td>Robot+Human (Co-training)</td>
+              <td>30.452</td>
+              <td>34.671</td>
+            </tr>
+          </table> -->
 
           <br>
           <br>
@@ -283,6 +454,8 @@ Data</h1>
     </div>
   </div>
 </section>
+
+
 
 <style>
   .image-row {
@@ -314,10 +487,24 @@ Data</h1>
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Future Work</h2>
+        <div class="columns is-vcentered" style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <figure style="max-width: 48%; height: auto; margin: 0;">
+            <img src="./static/images/clip.png" alt="Embodiment 1" style="width: 100%; height: auto;">
+            <figcaption>Overlaying CLIP attention on input image. Prompt: "Toy, Bowl and Hand".</figcaption>
+          </figure>
+          <div style="max-width: 48%; margin: 0; text-align: left;">
+            <ul style="list-style-position: inside; padding-left: 0;">
+              <li>- Non-Hierarchical single stage policy to remove need for low-level teleoperation data</li>
+              <li>- Extending to cluttered environments and more complex motion trajectories</li>
+              <li>- Using CLIP to allow goal specification through language and provide better task specific scene abstraction</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
